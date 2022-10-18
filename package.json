@@ -1,6 +1,6 @@
 {
   "name": "hackathon-motion-library",
-  "version": "0.0.0",
+  "version": "0.0.3",
   "description": "",
   "main": "test.ts",
   "scripts": {
@@ -10,10 +10,13 @@
     "type": "git",
     "url": "git+https://github.com/TristanKirwan/motion-library.git"
   },
-  "author": "",
+  "author": "Tristan Kirwan & Jordi Suijkerbuijk",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/TristanKirwan/motion-library/issues"
   },
-  "homepage": "https://github.com/TristanKirwan/motion-library#readme"
+  "homepage": "https://github.com/TristanKirwan/motion-library#readme",
+  "dependencies": {
+    "animejs": "^3.2.1"
+  }
 }
