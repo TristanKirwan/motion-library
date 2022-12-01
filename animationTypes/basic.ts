@@ -14,3 +14,19 @@ export default function basic(target: HTMLElement, individualMotion: Boolean) {
     return false;
   }
 }
+
+export function basicFadeIn(target: HTMLElement, individualMotion: Boolean) {
+  try {
+    return anime
+      .timeline({
+        targets: target,
+        autoplay: false,
+      })
+      .add({
+        opacity: [0, 1],
+      });
+  } catch (e) {
+    return false;
+  }
+}
+
