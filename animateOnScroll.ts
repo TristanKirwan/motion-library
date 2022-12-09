@@ -6,7 +6,7 @@ const animationMapping = {
   parallax: Parallax,
 };
 
-export function animateGroup({ target, options }: motion) {
+export function animateOnScroll({ target, options }: motion) {
   if (!options?.type) {
     console.log(`Animation with type ${options.type} does not exist.`);
     return null;

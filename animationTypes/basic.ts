@@ -8,10 +8,10 @@ export function basic(target: HTMLElement, options: motionOptions, individualMot
         targets: target,
         autoplay: false,
         easing: options?.easing || 'easeInOutQuint',
-        duration: options?.duration || 300,
+        duration: options?.duration || 600,
       })
       .add({
-        translateX: ['0px', '100px'],
+        translateX: ['-100px', '0px'],
       });
   } catch (e) {
     return false;
@@ -29,7 +29,7 @@ export function basicFadeIn(
         targets: target,
         autoplay: false,
         easing: options?.easing || 'easeInOutQuint',
-        duration: options?.duration || 300,
+        duration: options?.duration || 600,
       })
       .add({
         opacity: [0, 1],

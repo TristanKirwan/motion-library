@@ -3,7 +3,6 @@ import anime from 'animejs';
 export default function parallax(target: HTMLElement) {
   try {
     window.addEventListener('scroll', (e) => {
-      console.log('e', e);
       return anime
         .timeline({
           targets: target,
