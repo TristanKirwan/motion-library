@@ -7,22 +7,18 @@ const animationMapping = {
   basicFadeIn: basicFadeIn,
 };
 
-export function animateGroup({ target, options }: motion, individualMotion: boolean = false) {
+export function animateGroup({ target, options, callbacks }: motion) {
   if (!options?.type) {
     console.log(`Animation with type ${options.type} does not exist.`);
     return null;
   }
-  const animationTimeline = animationMapping[options?.type](target, options, individualMotion);
+  const animationTimeline = animationMapping[options?.type]({ target, options, callbacks });
   if (!animationTimeline) {
     console.log('Something went wrong trying to make an animation timeline.');
     return;
   }
 
-  if (!individualMotion) {
-    createIntersectionObserver(target, () => {
-      animationTimeline.play();
-    });
-  }
-
-  return;
+  createIntersectionObserver(target, () => {
+    animationTimeline.play();
+  });
 }
