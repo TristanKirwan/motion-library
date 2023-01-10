@@ -17,7 +17,7 @@ export type itemsMotion = {
 };
 
 export type motion = {
-  target: HTMLElement;
+  targets: HTMLElement[] | HTMLElement;
   options: motionOptions;
   callbacks?: AnimeCallBack;
 };

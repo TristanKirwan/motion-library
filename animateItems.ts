@@ -15,7 +15,6 @@ This specific helper function is created to for example provide every section on
 same animation once they are scrolled into view.
 */
 export function animateItems({ targets, options, callbacks }: itemsMotion) {
-  console.log('callbacks', callbacks);
   if (!options?.type) {
     console.log(`Animation with type ${options.type} does not exist.`);
     return null;
@@ -24,12 +23,11 @@ export function animateItems({ targets, options, callbacks }: itemsMotion) {
   Array.from(targets).map((item, i) => {
     //Fetch the animation type and create a timeline for every target given.
     const animationTimeline = animationMapping[options?.type]({
-      target: item,
+      targets: item,
       options: options,
       callbacks: callbacks,
     });
 
-    console.log('animationTimeline', animationTimeline);
     if (!animationTimeline) {
       console.log('Something went wrong trying to make an animation timeline.');
       return;
@@ -39,8 +37,8 @@ export function animateItems({ targets, options, callbacks }: itemsMotion) {
       //Option to play the animation in reverse.
       if (options?.reverse) {
         //If the animation doesn't have autoplay we have to seek the end of the animation reverse it and start it again.
-        animationTimeline.seek(options?.duration || 600);
         animationTimeline.reverse();
+        animationTimeline.seek(options?.duration || 600);
       }
       animationTimeline.play();
     });

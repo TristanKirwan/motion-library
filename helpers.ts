@@ -18,24 +18,26 @@ export function createIntersectionObserver(target: HTMLElement, isIntersectingHa
   }
 }
 
+type AnimeCallbackFunction = (anim: anime.AnimeInstance) => void;
+
 export function addCallbacksToTimeline(timeline: AnimeInstance, callbacks: AnimeCallBack) {
-  if (callbacks?.complete) {
-    timeline.complete = callbacks.complete;
-  }
-
-  if (callbacks?.begin) {
-    timeline.begin = callbacks.begin;
-  }
-
-  if (callbacks?.update) {
-    timeline.update = callbacks.update;
-  }
+  //Mapping over all the provided callback functions and add them to the timeline
+  Object.keys(callbacks).map((callback) => {
+    if (callbacks?.[callback]) {
+      timeline[callback] = () => {
+        if (callbacks[callback]) {
+          callbacks[callback](timeline);
+        }
+      };
+    }
+  });
 }
 
 export function setDefaultTimelineOptions(
   options: motionOptions,
-  target: HTMLElement
+  target: HTMLElement | HTMLElement[]
 ): AnimeParams {
+  //Set the default options that will be used on most of our animations
   const defaultOptions: AnimeParams = {
     targets: target,
     autoplay: false,

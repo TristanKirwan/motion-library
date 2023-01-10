@@ -2,13 +2,12 @@ import anime, { AnimeParams } from 'animejs';
 import { addCallbacksToTimeline, setDefaultTimelineOptions } from '../helpers';
 import { motion } from '../types';
 
-export function basic({ target, options, callbacks }: motion) {
+export function basic({ targets, options, callbacks }: motion) {
   try {
-    const timelineOptions: AnimeParams = setDefaultTimelineOptions(options, target);
+    console.log('test');
+    const timelineOptions: AnimeParams = setDefaultTimelineOptions(options, targets);
 
-    const timeline = anime.timeline({ ...timelineOptions }).add({
-      translateX: ['-100px', '0px'],
-    });
+    const timeline = anime({ ...timelineOptions, translateX: ['-100px', '0px'] });
 
     if (callbacks) {
       addCallbacksToTimeline(timeline, callbacks);
@@ -20,13 +19,11 @@ export function basic({ target, options, callbacks }: motion) {
   }
 }
 
-export function basicFadeIn({ target, options, callbacks }: motion) {
+export function basicFadeIn({ targets, options, callbacks }: motion) {
   try {
-    const timelineOptions: AnimeParams = setDefaultTimelineOptions(options, target);
+    const timelineOptions: AnimeParams = setDefaultTimelineOptions(options, targets);
 
-    const timeline = anime.timeline({ ...timelineOptions }).add({
-      opacity: [0, 1],
-    });
+    const timeline = anime({ ...timelineOptions, opacity: [0, 1] });
 
     if (callbacks) {
       addCallbacksToTimeline(timeline, callbacks);
