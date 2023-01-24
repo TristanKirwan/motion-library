@@ -22,12 +22,6 @@ export function animateGroup({ targets, options, callbacks }: motion) {
 
   //Get the first target which will be observed
   createIntersectionObserver(targets[0] as HTMLElement, () => {
-    //Option to play the animation in reverse.
-    if (options?.reverse) {
-      //If the animation doesn't have autoplay we have to seek the end of the animation reverse it and start it again.
-      animationTimeline.reverse();
-      animationTimeline.seek(options?.duration || 600);
-    }
     animationTimeline.play();
   });
 }

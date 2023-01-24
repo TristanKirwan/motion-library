@@ -1,4 +1,4 @@
-import { AnimeCallBack, AnimeInstance, AnimeParams } from 'animejs';
+import anime, { AnimeCallBack, AnimeInstance, AnimeParams } from 'animejs';
 import { motionOptions } from './types';
 
 export function createIntersectionObserver(target: HTMLElement, isIntersectingHandler: Function) {
@@ -47,4 +47,11 @@ export function setDefaultTimelineOptions(
   };
 
   return defaultOptions;
+}
+
+export function setReverse(timeline, reverse = false, duration = 600) {
+  if (reverse) {
+    timeline.reverse();
+    timeline.seek(duration);
+  }
 }

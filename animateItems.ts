@@ -34,12 +34,6 @@ export function animateItems({ targets, options, callbacks }: itemsMotion) {
     }
 
     createIntersectionObserver(item as HTMLElement, () => {
-      //Option to play the animation in reverse.
-      if (options?.reverse) {
-        //If the animation doesn't have autoplay we have to seek the end of the animation reverse it and start it again.
-        animationTimeline.reverse();
-        animationTimeline.seek(options?.duration || 600);
-      }
       animationTimeline.play();
     });
   });
